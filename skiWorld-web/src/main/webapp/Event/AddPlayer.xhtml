@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Player</ui:define>
+	<ui:define name="content">
+
+
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Last name" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.lastName}"
+                    			 size="15" id="lname"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="lname" style="color:red"/>
+                </h:panelGroup>
+			
+			<h:outputLabel value="First name" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.firstName}"
+                    			 size="15" id="fname"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="fname" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="CIN" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.cin}"
+                    			 size="15" id="cin"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="cin" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Phone" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.phone}"
+                    			 size="15" id="phone"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="phone" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Email" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.email}"
+                    			 size="15" id="email"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="email" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Adress" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.adress}"
+                    			 size="15" id="addr"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="addr" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Login" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.login}"
+                    			 size="15" id="login"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="login" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Password" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.password}"
+                    			 size="15" id="pwd"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="pwd" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Age" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.age}"
+                    			 size="15" id="age"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="age" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Experience" />
+			<h:panelGroup>
+					<p:inputText value="#{playerBean.experiencePlayer}"
+                    			 size="15" id="exp"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="exp" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="VIP" />
+			<p:selectBooleanCheckbox value="#{playerBean.VIP}" />
+			
+			
+			
+			<h:commandButton action="#{playerBean.AddPlayer()}" value="Add" />
+		</h:panelGrid>
+	</h:form>
+
+</ui:define>
+</ui:composition>
+</html>

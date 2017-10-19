@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+<h:form>
+					<p:dataTable var ="item" value="#{playerBean.players}" border="1">
+					<p:column>
+						<f:facet name="header">id Player</f:facet>
+						<h:outputText value="#{item.idUser}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Last Name</f:facet>
+						<h:outputText value="#{item.lastName}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">First Namet</f:facet>
+						<h:outputText value="#{item.firstName}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Cin</f:facet>
+						<h:outputText value="#{item.cin}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Phone</f:facet>
+						<h:outputText value="#{item.phone}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Email</f:facet>
+						<h:outputText value="#{item.email}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Adress</f:facet>
+						<h:outputText value="#{item.adress}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Age</f:facet>
+						<h:outputText value="#{item.age}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Experience</f:facet>
+						<h:outputText value="#{item.experiencePlayer}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">VIP</f:facet>
+						<h:outputText value="#{item.VIP}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Event</f:facet>
+						<h:outputText value="#{item.evenement.name}" />
+      				 </p:column>
+      				 <p:column>
+    <h:commandButton value="affect" >
+    <f:setPropertyActionListener value="#{item}" target="#{playerBean.player}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="#{true}" target="#{playerBean.renderUpdateForm}"></f:setPropertyActionListener>
+   </h:commandButton>
+    </p:column>
+    
+
+					
+					</p:dataTable>
+					
+				</h:form>
+				
+		<br />
+		<h:form rendered="#{playerBean.renderUpdateForm}">
+			<p:panelGrid columns="2">
+		id:
+		<h:outputText value="#{playerBean.player.idUser}" />
+		
+		Last name:
+		<h:outputText value="#{playerBean.player.lastName}" />
+		First name:
+		<h:outputText value="#{playerBean.player.firstName}" />
+		Cin:
+		<h:outputText value="#{playerBean.player.cin}" />
+		Phone:
+		<h:outputText value="#{playerBean.player.phone}" />
+		Email:
+		<h:outputText value="#{playerBean.player.email}" />
+		Adress:
+		<h:outputText value="#{playerBean.player.adress}" />
+		Login:
+		<h:outputText value="#{playerBean.player.login}" />
+		Password:
+		<h:outputText value="#{playerBean.player.password}" />
+		Age:
+		<h:outputText value="#{playerBean.player.age}" />
+		Experience:
+		<h:outputText value="#{playerBean.player.experiencePlayer}" />
+		
+		Event:
+		<p:selectOneMenu value="#{playerBean.player.evenement.idEvent}">
+					<f:selectItems value="#{playerBean.events()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idEvent}" />
+			</p:selectOneMenu>
+				
+					
+					<h:commandButton action="#{playerBean.update()}"
+					value="Submit" >
+    
+    <f:setPropertyActionListener value="#{false}" target="#{playerBean.renderUpdateForm}"></f:setPropertyActionListener>
+   </h:commandButton>
+					
+			</p:panelGrid>
+		</h:form>
+				
+</ui:define>
+</ui:composition>
+</html>

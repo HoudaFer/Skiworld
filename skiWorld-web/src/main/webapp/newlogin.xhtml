@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
+<h:body class="tm-gray-bg">
+	<ui:composition template="/template/layout.xhtml">
+
+
+
+		<!-- Banner -->
+		<section class="tm-banner">
+			<!-- Flexslider -->
+			<div class="flexslider flexslider-banner">
+				<ul class="slides">
+					<li>
+						<div class="tm-banner-inner">
+							<h1 class="tm-banner-title">
+								Find <span class="tm-yellow-text">Tour</span> Programs
+							</h1>
+							<p class="tm-banner-subtitle">For Your Destinations</p>
+							<a href="#more" class="tm-banner-link">Learn More</a>
+						</div> <img src="../resources/img/banner-2.jpg" />
+					</li>
+					<li>
+						<div class="tm-banner-inner">
+							<h1 class="tm-banner-title">
+								Lorem <span class="tm-yellow-text">Ipsum</span> Dolor
+							</h1>
+							<p class="tm-banner-subtitle">Wonderful Destinations</p>
+							<a href="#more" class="tm-banner-link">Learn More</a>
+						</div> <img src="../resources/img/banner-3.jpg" />
+					</li>
+					<li>
+						<div class="tm-banner-inner">
+							<h1 class="tm-banner-title">
+								Proin <span class="tm-yellow-text">Gravida</span> Nibhvell
+							</h1>
+							<p class="tm-banner-subtitle">Velit Auctor</p>
+							<a href="#more" class="tm-banner-link">Learn More</a>
+						</div> <img src="../resources/img/banner-1.jpg" />
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="container tm-home-section-1" id="more">
+			<div class="row">
+				<!-- slider -->
+				<div class="flexslider effect2 effect2-contact tm-contact-box-1">
+
+					<div class='login'>
+						<h2>Sign in</h2>
+						<h:form>
+							<h:panelGrid columns="2">
+								<h:outputLabel value="login" />
+								<h:inputText value="#{authenticationBean.login}" />
+								<h:outputLabel value="password" />
+								<h:inputSecret value="#{authenticationBean.password}" />
+								<h:commandButton action="#{authenticationBean.login()}"
+									value="Connexion" />
+							</h:panelGrid>
+							<h:commandLink action="SignIn" value="SignIn" />
+						</h:form>
+			
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:composition>
+</h:body>
+</html>

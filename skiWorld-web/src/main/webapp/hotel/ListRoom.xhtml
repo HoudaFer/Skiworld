@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+    <h:form>
+	<h:dataTable var ="rom" value="#{listRoomBean.rooms}" border="4">
+	<h:column>
+	<f:facet name="header" > number of room </f:facet>
+    <h:outputLabel value="#{rom.numberRoom}" />
+	</h:column>
+	<h:column>
+	<f:facet name="header">Type of room</f:facet>
+	<h:outputLabel value="#{rom.roomType}"/>
+	</h:column>
+	<h:column>
+	<f:facet name="header">Hotel</f:facet>
+	<h:outputLabel value="#{rom.hotel.name}"/>
+	</h:column>
+	<h:column>
+	
+	<h:commandButton action="#{listRoomBean.delete(rom)}" value="Delete" />
+	
+	</h:column>
+	<h:column>
+	
+	<h:commandButton  value="Update" >
+	<f:setPropertyActionListener value="#{rom}" target="#{listRoomBean.room}"></f:setPropertyActionListener>
+	 <f:setPropertyActionListener value="#{true}" target="#{listRoomBean.test1}"></f:setPropertyActionListener>
+	</h:commandButton>
+	</h:column>
+	</h:dataTable>	
+	<h:commandButton action="#{listRoomBean.inisialiser()}" value="Add">
+	
+	</h:commandButton>
+		
+</h:form>
+	<div >
+         <h:form  rendered="#{listRoomBean.test1}">
+         <h2>Room</h2>
+         <h:panelGrid columns="2">
+         <h:outputLabel value="number of room" />
+			<h:inputText  value="#{listRoomBean.room.numberRoom}" />
+			<h:outputText value="type of room"/>
+			<h:inputText value="#{listRoomBean.room.roomType}" />
+			
+		
+		
+			
+			<h:commandButton action="#{listRoomBean.update()}" value="Submit" />
+	
+	</h:panelGrid>
+         </h:form>
+         </div>
+		</ui:define>
+</ui:composition>
+</html>

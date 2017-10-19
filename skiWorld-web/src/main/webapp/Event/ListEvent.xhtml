@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+				<h:form>
+					<p:dataTable var ="item" value="#{addEventBean.events}" border="1">
+					<p:column>
+						<f:facet name="header">id Event</f:facet>
+						<h:outputText value="#{item.idEvent}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Event Name</f:facet>
+						<h:outputText value="#{item.name}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Date Event</f:facet>
+						<h:outputText value="#{item.dateEvent}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Place</f:facet>
+						<h:outputText value="#{item.place}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Num Guests</f:facet>
+						<h:outputText value="#{item.numberGuests}" />
+					</p:column>
+					
+					<p:column>
+      					 <h:commandButton action="#{addEventBean.delete(item)}" value="delete"/>
+      				 </p:column>
+      				 
+      				 <p:column>
+    <h:commandButton value="update" >
+    <f:setPropertyActionListener value="#{item}" target="#{addEventBean.event}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="#{true}" target="#{addEventBean.renderUpdateForm}"></f:setPropertyActionListener>
+   </h:commandButton>
+    </p:column>
+      				 
+					
+					</p:dataTable>
+					
+	<h:commandButton action="#{addEventBean.inisialiser()}"
+					value="Add" >
+					</h:commandButton>		
+					
+					
+				</h:form>
+				
+				<br />
+		<h:form rendered="#{addEventBean.renderUpdateForm}">
+			<p:panelGrid columns="2">
+		id:
+		<h:outputText value="#{addEventBean.event.idEvent}" />
+		
+		nom:
+		<h:panelGroup>
+					<p:inputText value="#{addEventBean.event.name}"
+                    			 size="15" id="name"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="name" style="color:red"/>
+                </h:panelGroup>
+		Date Event:
+		<p:inputText id="date" value="#{addEventBean.event.dateEvent}"
+			converterMessage="date invalide">
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+		    </p:inputText>
+		Place:
+		<h:panelGroup>
+					<p:inputText value="#{addEventBean.event.place}"
+                    			 size="15" id="place"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="place" style="color:red"/>
+                </h:panelGroup>
+		Number Guests:
+		<h:panelGroup>
+					<p:inputText value="#{addEventBean.event.numberGuests}"
+                    			 size="15" id="nbg"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="nbg" style="color:red"/>
+                </h:panelGroup>
+				
+					
+					<h:commandButton action="#{addEventBean.updateEvent()}"
+					value="Submit" >
+    
+    <f:setPropertyActionListener value="#{false}" target="#{addEventBean.renderUpdateForm}"></f:setPropertyActionListener>
+   </h:commandButton>
+					
+			</p:panelGrid>
+		</h:form>
+				
+    </ui:define>
+</ui:composition>
+</html>

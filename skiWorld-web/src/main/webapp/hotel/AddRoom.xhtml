@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+	<h:form>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<h:outputLabel value="numberRoom" />
+			<h:inputText  value="#{addRoomBean.numberRoom}" />
+			
+			
+			
+			<h:outputLabel value="RoomType"/>
+			<h:inputText value="#{addRoomBean.type}" />
+			<br/>
+			<br/>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<p:outputLabel value="hotel name:"/>
+			<p:selectOneMenu value="#{addRoomBean.hotel}" columns="3" converter="hotConv"
+			  var="t">
+			<f:selectItems value="#{addRoomBean.hotels}" var="hotel" itemLabel="#{hotel.name}" 
+			itemValue="#{hotel}" />
+			<p:column style="width:10%">
+                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+            </p:column>
+ 
+            <p:column>
+                <h:outputText value="#{t.address}" />
+            </p:column>
+			
+			</p:selectOneMenu> 
+			
+			
+			
+			
+			
+			
+			</h:panelGrid>
+			<h:commandButton action="#{addRoomBean.addRoom()}" value="Add" >
+			
+			</h:commandButton>
+				
+			</h:panelGrid>	
+	</h:form>		
+	</ui:define>
+</ui:composition>
+
+</html>

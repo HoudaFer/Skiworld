@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+<h1>Send mail</h1>
+
+<h:form>
+            <p:panelGrid columns="2">
+                
+                To:
+                <h:panelGroup>
+                    <p:inputText size="15" id="name"
+                                 value="#{clientsBean.recipient}"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="name" style="color:red"/>
+                </h:panelGroup>
+                
+                Subject:
+                <h:panelGroup>
+                    <p:inputText size="30" id="subject"
+                                 value="#{clientsBean.subject}"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="subject" style="color:red"/>
+                </h:panelGroup>
+                
+                Message:
+                <h:panelGroup>
+                    <p:inputTextarea cols="45" rows="15" id="message"
+                                     value="#{clientsBean.message}"
+                                     required="true"
+                                     requiredMessage="Required"/>
+                    <p:message for="message" style="color:red"/>
+                </h:panelGroup>
+                 
+                 
+                 
+                <h:commandButton value="Send" action="#{clientsBean.send()}" />
+                <h:outputText value="#{clientsBean.statusMessage}" style="color:red"/>
+         </p:panelGrid>
+        </h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<title>List Planing</title>
+</h:head> 
+<body> 
+<h:form>
+		<p:dataTable value="#{planingBean.planings}" var="planing" border="3">
+			<p:column>
+				<f:facet name="header">name</f:facet>
+				<h:outputLabel value="#{planing.name}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">description</f:facet>
+				<h:outputLabel value="#{planing.description}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">date</f:facet>
+				<h:outputLabel value="#{planing.date}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">delete</f:facet>
+				<p:commandButton action="#{planingBean.DeletePlaning()}"
+					value="delete">
+					<f:setPropertyActionListener value="#{planing}"
+						target="#{planingBean.planing}">
+					</f:setPropertyActionListener>
+				</p:commandButton>
+			</p:column>
+			</p:dataTable>
+	</h:form>
+</body> 
+</html>

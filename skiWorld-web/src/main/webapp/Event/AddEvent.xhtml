@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Name " />
+			<h:panelGroup>
+					<p:inputText value="#{addEventBean.name}"
+                    			 size="15" id="name"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="name" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Number Guests " />
+			<h:panelGroup>
+					<p:inputText value="#{addEventBean.numberGuests}"
+                    			 size="15" id="nbg"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="nbg" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Place " />
+			<h:panelGroup>
+					<p:inputText value="#{addEventBean.place}"
+                    			 size="15" id="place"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <p:message for="place" style="color:red"/>
+                </h:panelGroup>
+			<h:outputLabel value="Date " />
+			
+			<p:inputText id="date" value="#{addEventBean.dateEvent}"
+			converterMessage="date invalide">
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+		    </p:inputText>
+		    
+			
+			<h:commandButton action="#{addEventBean.AjouterEvent()}" value="Add" />
+		</h:panelGrid>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

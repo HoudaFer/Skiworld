@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                
+            <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+
+                <h:form>
+                <h:panelGroup>
+                <p:chart type="pie" model="#{statReservation.pieModel1}" 
+                style="width:400px;height:300px" rendered="#{statReservation.pieModel1 != null}" />
+                
+                </h:panelGroup>
+                </h:form>
+                
+               	</ui:define>
+</ui:composition>
+                	
+			</html>

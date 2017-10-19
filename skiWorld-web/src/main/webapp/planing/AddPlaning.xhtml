@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Name" />
+			<p:inputText value="#{planingBean.name}" />
+			<p:outputLabel for="event" value="Date" />
+			<p:calendar id="event" value="#{planingBean.date}">
+				<p:ajax event="dateSelect" listener="#{planingBean.onDateSelect()}" />
+			</p:calendar>
+			<p:outputLabel value="Description" />
+			<p:inputText value="#{planingBean.description}" />
+			<p:selectOneMenu value="#{planingBean.planing.instructor.idUser}">
+				<f:selectItems value="#{planingBean.instructors}" var="item"
+					itemLabel="#{item.firstName}" itemValue="#{item.idUser}" />
+			</p:selectOneMenu>
+			<h:commandButton action="#{planingBean.AddPlaning()}" value="Add" />
+		</h:panelGrid>
+	</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

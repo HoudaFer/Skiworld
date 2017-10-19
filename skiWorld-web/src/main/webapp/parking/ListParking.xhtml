@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+    <h:form>
+	<h:dataTable var ="park" value="#{listParkingBean.parkings}" border="4">
+	<h:column>
+	<f:facet name="header" > place Number</f:facet>
+    <h:outputLabel value="#{park.placeNumber}" />
+	</h:column>
+
+    <h:column>
+	
+	<h:commandButton action="#{listParkingBean.delete(park)}" value="Delete" />
+	
+	</h:column>
+	<h:column>
+	
+	<h:commandButton  value="Update" >
+	<f:setPropertyActionListener value="#{park}" target="#{listParkingBean.parking}"></f:setPropertyActionListener>
+	 <f:setPropertyActionListener value="#{true}" target="#{listParkingBean.test}"></f:setPropertyActionListener>
+	</h:commandButton>
+	</h:column>
+	</h:dataTable>	
+	<h:commandButton action="#{listParkingBean.inisialiser()}" value="Add">
+	
+	</h:commandButton>	
+</h:form>
+<div >
+         <h:form  rendered="#{listParkingBean.test}">
+         <h2>Parking</h2>
+         <h:panelGrid columns="2">
+         <h:outputLabel value="Place number" />
+			<h:inputText  value="#{listParkingBean.parking.placeNumber}" />
+			
+			<h:commandButton action="#{listParkingBean.update()}" value="Submit" />
+	
+	</h:panelGrid>
+         </h:form>
+         </div>
+	</ui:define>
+</ui:composition>
+                	
+</html>

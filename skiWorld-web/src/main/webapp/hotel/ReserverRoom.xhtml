@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+                	
+		<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+			<h:form>
+			<h:dataTable border="2" value="#{reserverRoomBean.rooms}"
+				var="room">
+				<f:facet name="header">List of rooms</f:facet>
+				<h:column>
+					<f:facet name="header">number of rooms</f:facet>
+					<h:outputText value="#{room.numberRoom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">type of room</f:facet>
+					<h:outputText value="#{room.roomType}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Réserver</f:facet>
+					<h:commandButton value="Sélectionner">
+						<f:setPropertyActionListener value="#{room}"
+							target="#{reserverRoomBean.selectedRoom}" />
+						<f:setPropertyActionListener value="true"
+							target="#{reserverRoomBean.renderReserver}" />
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+
+
+		</h:form>
+		<h:form rendered="#{reserverRoomBean.renderReserver}">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Hotel name" />
+				<h:outputText value="#{reserverRoomBean.selectedRoom.hotel.name}" />
+				 <p:outputLabel for="event" value="Arrival date:" />
+        <p:calendar id="event" value="#{reserverRoomBean.arrivalDate}">
+            <p:ajax event="dateSelect" listener="#{reserverRoomBean.onDateSelect()}"  />
+        </p:calendar>
+				
+				
+				 <p:outputLabel for="event" value="Departure date:" />
+        <p:calendar id="event2" value="#{reserverRoomBean.departureDate}">
+            <p:ajax event="dateSelect" listener="#{reserverRoomBean.onDateSelect1()}"  />
+        </p:calendar>
+				
+				
+					
+				
+				<h:commandButton action="#{reserverRoomBean.reserver()}" value="Réserver" />
+		
+			</h:panelGrid>
+		</h:form>
+			
+	</ui:define>
+</ui:composition>
+		</html>	
+			

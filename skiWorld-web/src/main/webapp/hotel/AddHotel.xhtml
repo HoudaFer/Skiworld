@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+			
+			<h:form>
+			<h:panelGrid columns="1">
+			<h:outputLabel value="name" />
+			<h:inputText  value="#{addHotelBean.name}" />
+			<h:outputLabel value="phone"/>
+			<h:inputText value="#{addHotelBean.phone}" />
+			<h:outputLabel value="address"/>
+			<h:inputText value="#{addHotelBean.address}" />
+			<h:outputLabel value="rating"/>
+			<h:inputText value="#{addHotelBean.rating}" />
+			<h:outputLabel value="email"/>
+			<h:inputText value="#{addHotelBean.email}" />
+			<h:outputLabel value="stars"/>
+			<h:inputText value="#{addHotelBean.stars}" />
+			<h:commandButton action="#{addHotelBean.addHotel()}" value="Add" />
+			
+			</h:panelGrid>
+	   </h:form>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+	<h:form>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<h:outputLabel value="Place Number" />
+			<h:inputText  value="#{addParkingBean.placeNumber}" />
+             <h:commandButton action="#{addParkingBean.addParking()}" value="Add" >
+			
+			</h:commandButton>
+				
+			</h:panelGrid>	
+	</h:form>		
+	</ui:define>
+</ui:composition>
+                	
+	</html>		

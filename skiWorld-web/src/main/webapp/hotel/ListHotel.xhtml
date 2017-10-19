@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	<head>
+		<title>List Hotel</title>
+	</head>
+	<body>	
+    <h:form>
+	<h:dataTable var ="hot" value="#{listHotelBean.hotels}" border="4">
+	<h:column>
+	<f:facet name="header" > name </f:facet>
+    <h:outputLabel value="#{hot.name}" />
+	</h:column>
+	<h:column>
+	<f:facet name="header">Phone</f:facet>
+	<h:outputLabel value="#{hot.phone}"/>
+	</h:column>
+	<h:column>
+	<f:facet name="header">Address</f:facet>
+	<h:outputLabel value="#{hot.address}"/>
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Rating</f:facet>
+	<h:outputLabel value="#{hot.rating}"/>
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Email</f:facet>
+	<h:outputLabel value="#{hot.email}"/>
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Stars</f:facet>
+	<h:outputLabel value="#{hot.stars}"/>
+	</h:column>
+	<h:column>
+	
+	<h:commandButton action="#{listHotelBean.delete(hot)}" value="Delete" />
+	
+	</h:column>
+	<h:column>
+	
+	<h:commandButton  value="Update" >
+	<f:setPropertyActionListener value="#{hot}" target="#{listHotelBean.hotel}"></f:setPropertyActionListener>
+	 <f:setPropertyActionListener value="#{true}" target="#{listHotelBean.test}"></f:setPropertyActionListener>
+	</h:commandButton>
+	</h:column>
+	</h:dataTable>	
+	<h:commandButton action="#{listHotelBean.inisialiser()}" value="Add">
+	
+	</h:commandButton>	
+	<h:commandButton action="#{statHotel.pieModel1}"  value="Show statistics">
+	
+	</h:commandButton>	
+</h:form>
+<div >
+         <h:form  rendered="#{listHotelBean.test}">
+         <h2>Hotel</h2>
+         <h:panelGrid columns="2">
+         <h:outputLabel value="name" />
+			<h:inputText  value="#{listHotelBean.hotel.name}" />
+			<h:outputText value="phone"/>
+			<h:inputText value="#{listHotelBean.hotel.phone}" />
+			<h:outputText value="address"/>
+			<h:inputText value="#{listHotelBean.hotel.address}" />
+			<h:outputText value="rating"/>
+			<h:inputText value="#{listHotelBean.hotel.rating}" />
+			<h:outputText value="email"/>
+			<h:inputText value="#{listHotelBean.hotel.email}" />
+			<h:outputText  value="stars"/>
+			<h:inputText value="#{listHotelBean.hotel.stars}" />
+			<h:commandButton action="#{listHotelBean.update()}" value="Submit" />
+	
+	</h:panelGrid>
+         </h:form>
+         </div>
+</body>
+</html>
