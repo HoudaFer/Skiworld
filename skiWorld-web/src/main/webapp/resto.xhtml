@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="content">
+<h:head>
+	 
+	<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Holiday - Tours</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css' />
+  <link href="../resources/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/> 
+  <link href="../resources/css/flexslider.css" rel="stylesheet"/> 
+  <link href="../resources/css/templatemo-style.css" rel="stylesheet"/>
+</h:head>
+<body>
+
+	<h:section> <!-- sidebar left start-->
+	<div>
+	<!-- Sidebar -->
+
+		<div class="w3-sidebar w3-yellow w3-bar-block" style="width:25%">
+				<!--responsive view logo start-->
+		<div class="logo dark-logo-bg visible-xs-* visible-sm-*">
+			
+		</div>
+
+   			<!--<h3 class="w3-bar-item">Menu</h3>-->
+    					<ul>
+				<li>
+					<h3 class="navigation-title" style="margin-top: 25px; margin-left: 15px;padding-bottom: 30px;">
+					Restaurant Management</h3>
+				</li>
+				<li><a href="../home/index.xhtml" class="w3-bar-item w3-button"><i class="fa fa-home"></i>
+						<span style="font-size: 18px;">Home</span></a></li>
+						
+				<li class="menu-list"><a href=""  class="w3-bar-item w3-button"><i class="fa fa-tags"></i>
+						<span class="bigtitle" style="font-size: 16px;">Restaurant</span></a>
+					<ul class="child-list">
+						<li style="margin-left: 35px;"><a href="AddRestaurant.xhtml"  class="w3-bar-item w3-button">
+						<i class="fa fa-plus"></i> Add new</a></li>
+						<li style="margin-left: 35px;"><a href="ListRestaurant.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-list"></i> List</a></li>
+					</ul></li>
+				<li class="menu-list"><a href=""  class="w3-bar-item w3-button"><i class="fa fa-coffee"></i>
+						<span style="font-size: 16px;">Restaurant Table</span></a>
+					<ul class="child-list">
+						<li style="margin-left: 35px;"><a href="AddRestoTable.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-plus"></i>Add Restaurant Table</a></li>
+						<li style="margin-left: 35px;"><a href="ListRestoTable.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-list"></i>List </a></li>
+					</ul></li>
+				<li class="menu-list"><a href=""  class="w3-bar-item w3-button"><i class="fa fa-spoon"></i>
+				 <span style="font-size: 16px;">Menu</span></a>
+				 <ul class="child-list">
+						<li style="margin-left: 35px;"><a href="AddMenu.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-plus"></i>Add new</a></li>
+						<li style="margin-left: 35px;"><a href="ListMenu.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-list"></i>List </a></li>
+					</ul></li>
+				<li class="menu-list"><a href=""  class="w3-bar-item w3-button"><i class="fa fa-male"></i>
+						<span style="font-size: 16px;">Worker</span></a>
+					<ul class="child-list">
+						<li style="margin-left: 35px;"><a href="AddWorker.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-plus"></i>Add new</a></li>
+						<li style="margin-left: 35px;"><a href="ListWorker.xhtml"  class="w3-bar-item w3-button"> 
+						<i class="fa fa-list"></i>List</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<div class="contain" style="width: 75%; height: 100%;">
+			<img src="../resources/img/slogan.png" style="margin-left: 46%; margin-top: 17%;" />
+		</div>
+		<!--responsive view logo end-->
+
+		<div class="sidebar-left-info">
+			<!-- visible small devices start-->
+			<div class=" search-field"></div>
+			<!-- visible small devices end-->
+
+			
+	 </div> </div>
+</h:section>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      		<!-- jQuery -->
+  	<script type="text/javascript" src="js/moment.js"></script>							<!-- moment.js -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>					<!-- bootstrap js -->
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>	<!-- bootstrap date time picker js, http://eonasdan.github.io/bootstrap-datetimepicker/ -->
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+   	<script type="text/javascript" src="js/templatemo-script.js"></script> 
+
+</body>
+</ui:define>
+</ui:composition>
+</html>
