@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Event Holder</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="firstName" />
+				<h:inputText value="#{userBean.firstName}" />
+				<h:outputLabel value="lastName" />
+				<h:inputText value="#{userBean.lastName}" />
+				<h:outputLabel value="cin" />
+				<h:inputText value="#{userBean.cin}" />
+				<h:outputLabel value="email" />
+				<h:inputText value="#{userBean.email}" />
+				<h:outputLabel value="phone" />
+				<h:inputText value="#{userBean.phone}" />
+				<h:outputLabel value="adress" />
+				<h:inputText value="#{userBean.adress}" />
+				<h:outputLabel value="registrationNumberEvent" />
+				<h:inputText value="#{userBean.registrationNumberEvent}" />
+				<h:outputLabel value="experienceEvent" />
+				<h:inputText value="#{userBean.experienceEvent}" />
+				<h:outputLabel value="login" />
+				<h:inputText value="#{userBean.login}" />
+				<h:outputLabel value="password" />
+				<h:inputText value="#{userBean.passWord}" />
+				<h:commandButton action="#{userBean.AddEventHolder()}" value="Add" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

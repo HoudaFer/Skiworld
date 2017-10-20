@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">List users</ui:define>
+	<ui:define name="content">
+	<h:form>
+		<p:selectOneMenu value="#{addChoiceBean.choice}">
+		<f:selectItem itemValue="ski" itemLabel="SkiMan" />
+			<f:selectItem itemValue="resto" itemLabel="Restaurant manager" />
+			<f:selectItem itemValue="event" itemLabel="Holder event" />
+			<f:selectItem itemValue="inst" itemLabel="Instructor" />
+		</p:selectOneMenu>
+		<h:commandButton action="#{addChoiceBean.redirect()}" value="confirm" />
+		</h:form>
+		</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+			
+				
+					
+				
+				<h:form>
+				
+				
+				
+				
+				
+			<h:panelGrid columns="2">
+			
+			<div class="form-group">
+		<label for="name" class="control-label col-lg-2" id="name1">Name *</label>
+		
+			 <h:panelGroup>
+			 <div class="col-lg-10">
+		<p:inputText size="15"  id="nam"	value="#{manageCategoryBean.name}" styleClass="form-control required" 
+	 required="true"
+    requiredMessage="Required*"/>
+      <p:message for="nam" style="color:red"/>
+      </div>
+      </h:panelGroup>
+			
+			
+			
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="List of Shops" />
+				
+							
+						
+								<p:selectOneMenu
+									value="#{manageCategoryBean.category.shop.idShop}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageCategoryBean.shops()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idShop}" />
+								</p:selectOneMenu>
+							
+								</div>
+							
+						
+									<div class="col-lg-offset-2 col-lg-10">
+							<h:commandButton  class="btn btn-block btn-adn" action="#{manageCategoryBean.addCategory()}"
+								value="Submit" styleClass="btn btn-info"/>
+								
+							</div>
+								
+			
+		</h:panelGrid>		
+			
+			
+		
+			
+			</h:form>
+		</ui:define>
+</ui:composition>
+</html>
+	
+             
+               
+                	
+			
+		
+		

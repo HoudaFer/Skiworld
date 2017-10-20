@@ -1,0 +1,69 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+			<div class="wrapper">
+			<div class="row">
+				
+					<div class="panel-body">
+	
+			<h:form>
+			<p:panelGrid columns="2">
+			<h:outputLabel value="Name"  size="15" id="name"/>
+			<h:panelGroup>
+		<p:inputText size="15" id="nam"	value="#{manageShopBean.name}" 
+	 required="true"
+    requiredMessage="Required*"/>
+      <p:message for="nam" style="color:red"/>
+	</h:panelGroup>
+			
+			<h:outputLabel value="Price" />
+			
+			<p:inputText value="#{manageShopBean.price}"  />
+			<h:outputLabel value="availability" />
+			<p:selectBooleanCheckbox value="#{manageShopBean.available}" style="color:blue;" />
+			
+					<h:outputLabel value="List of Categories" />
+					<h:panelGroup>
+							<div class="form-group">
+								<p:selectOneMenu
+									value="#{manageShopBean.product.category.idCategory}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageShopBean.categorys()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idCategory}" />
+								</p:selectOneMenu>
+							</div>
+							</h:panelGroup>
+							<h:commandButton action="#{manageShopBean.addProduct()}"
+								value="Submit" styleClass="btn btn-info" />
+						
+					
+							
+							
+							
+				
+			
+		
+			</p:panelGrid>
+			
+		</h:form>
+			
+			
+
+			
+				</div>
+					
+				</div>
+			</div>
+	</ui:define>
+</ui:composition>
+</html>
+	

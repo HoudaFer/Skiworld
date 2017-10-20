@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+	<h:form enctype="multipart/form-data">
+		<h3>Choose the Ski Area you want to add </h3>
+	
+		
+		<h:panelGrid columns="2">
+		    <h:outputLabel value="Name" />
+			<h:inputText value="#{addSkiAreaBean.name}" />
+			<h:outputLabel value="Address" />
+			<h:inputText value="#{addSkiAreaBean.address}" />
+			<h:outputLabel value="Image" />
+			<h:inputFile value="#{addSkiAreaBean.picFile}" />
+			<h:outputLabel value="IS Available" />
+			<h:selectBooleanCheckbox value="#{addSkiAreaBean.available}" />
+			<h:outputLabel value="Spectator Number" />
+			<h:inputText value="#{addSkiAreaBean.spectatorNumber}" />
+			
+	
+			<h:commandButton action="#{addSkiAreaBean.AddSkiArea()}" value="Add" />
+		</h:panelGrid>
+		
+		<br />
+		
+		<h:commandButton value="Home" action="#{addUserBean.redirect()}" />
+		<br />
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

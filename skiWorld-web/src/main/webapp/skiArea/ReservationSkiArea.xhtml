@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	      xmlns:o="http://omnifaces.org/ui"
+	      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+   	
+			<h:form>
+	<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+	<p:outputLabel for="button" value="Select a date:" />
+        <p:calendar id="button" value="#{reservationSkiAreaBean.reservationDate}"  />
+            <h:outputText value="#{reservationSkiAreaBean.reservationDate}" >
+                <f:convertDateTime pattern="yyyy-MM-dd" />
+            </h:outputText>
+			<h:commandButton action="#{reservationSkiAreaBean.find2()}" value="Submit"  />
+			</h:panelGrid>
+		</h:form>
+		
+		
+			
+<h:form>
+
+   <p:dataTable id="tableStateDT" var="reservation" value="#{reservationSkiAreaBean.skiareas}" widgetVar="reservationTables" multiViewState="true"
+                 rows="10" paginator="true" 
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15"
+                 selectionMode="single" selection="#{reservationSkiAreaBean.selectedskiArea}" rowKey="#{reservation.idArea}"
+                 emptyMessage="No Ski areas found for reservation" filteredValue="#{reservationSkiAreaBean.skiareasfiltered}">
+ 
+        <f:facet name="header">
+            <p:outputPanel>
+<!--                 <h:outputText value="Search all fields:" /> -->
+<!--                 <p:inputText id="globalFilter" onkeyup="PF('reservationTables').filter()" style="width:150px" placeholder="Enter keyword"/> -->
+            </p:outputPanel>
+        </f:facet>
+        <p:column headerText="Name" filterBy="#{reservation.name}" sortBy="#{reservation.name}" filterMatchMode="startsWith">
+            <h:outputText value="#{reservation.name}"  />
+            
+        
+        </p:column>
+           <p:column headerText="SpectatorNumber" filterBy="#{reservation.spectatorNumber}" sortBy="#{reservation.spectatorNumber}" filterMatchMode="startsWith">
+            <h:outputText value="#{reservation.spectatorNumber}" />
+        </p:column>
+            <p:column headerText="Type Area" filterBy="#{reservation.skiAreaType.typeArea}" sortBy="#{reservation.skiAreaType.typeArea}" filterMatchMode="startsWith">
+            <h:outputText value="#{reservation.skiAreaType.typeArea}" />
+        </p:column>
+        		<p:column headerText="reserver" >
+		<f:facet name="header">Book a SkiArea</f:facet>
+					<h:commandButton value="Book" action="#{reservationSkiAreaBean.reserver()}">
+					<f:setPropertyActionListener value="#{reservation}" target="#{reservationSkiAreaBean.selectedskiArea}"></f:setPropertyActionListener>
+					</h:commandButton>		
+					 </p:column> 
+    
+ 
+    
+    </p:dataTable>
+ 
+
+</h:form>
+		<h:form rendered="#{reservationSkiAreaBean.renderReserver}">
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				<h:outputLabel value="Ski Area :" />
+				<h:outputText value="#{reservationSkiAreaBean.selectedskiArea.name}" />
+				<h:outputLabel value="Reservation Date : " />
+				<h:inputText value="#{reservationSkiAreaBean.reservationDate}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+				
+				<h:outputLabel value="Departure Date" />
+				<h:inputText value="#{reserverRoomBean.departureDate}">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+
+				<h:commandButton action="#{reservationSkiAreaBean.reserver()}" value="Book" >
+			<f:setPropertyActionListener value="#{false}" target="#{reservationSkiAreaBean.renderReserver}"></f:setPropertyActionListener>
+		</h:commandButton>
+				  
+			</h:panelGrid>
+		</h:form>
+			</ui:define>
+</ui:composition>
+
+	   
+	      </html> 

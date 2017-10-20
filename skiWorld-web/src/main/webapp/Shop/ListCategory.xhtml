@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+					
+					 	
+<p:growl id="growl"></p:growl>
+<h:form id="ProductListForm">
+<p:panel header="List Category">
+	<p:dataTable id="datalist"  value="#{manageCategoryBean.categorys}"  var="prod"
+				paginator="true" rows="10" rowsPerPageTemplate="10,20,30,40,50" >
+	
+   
+	<p:column >
+	<f:facet name="header" >
+	<h:outputText value="Category Name" />
+	</f:facet>
+	<h:outputText value="#{prod.name}" />
+	
+	</p:column>
+	
+	
+	
+
+	
+	
+	
+	
+	<p:column>
+					<f:facet name="header">
+						<h:outputText value="Shop Name" />
+					</f:facet>
+					<h:outputText value="#{prod.shop.name}" />
+				</p:column>
+	
+	
+	
+		<p:column>
+					<f:facet name="header">
+						<h:outputText value="Delete" />
+					</f:facet>
+					<p:commandButton ajax="true" id="deleteButton" update="datalist"
+						actionListener="#{manageCategoryBean.delete(prod)}" value="Delete"
+						icon="ui-icon-trash" immediate="true" />
+				</p:column>
+	
+	
+    
+   <p:column>
+					<f:facet name="header">
+						<h:outputText value="Edit" />
+					</f:facet>
+					<p:commandButton id="editButton" ajax="true"
+						actionListener="#{manageCategoryBean.prepareEdit(prod)}"
+						icon="ui-icon-pencil" value="Edit" update=":ProductEditForm"
+						oncomplete="PF('ProductEditDialog').show()" />
+
+
+				</p:column>
+	
+	
+	
+	
+	<f:facet name="footer">
+					<p:commandButton id="createButton" icon="ui-icon-plus" ajax="true"
+						value="Create" actionListener="#{manageCategoryBean.prepareCreate()}"
+						update=":ProductCreateForm"
+						oncomplete="PF('ProductCreateDialog').show()" />
+				</f:facet>
+	
+	</p:dataTable>
+	</p:panel>
+	</h:form>
+	
+	<!-- Creation form -->
+	
+	
+		
+	<p:dialog id="ProductCreateForm" widgetVar="ProductCreateDialog"
+		modal="true" resizable="true" header="New Preduct ">
+		<h:form >
+		<p:panelGrid columns="2" rendered="#{manageCategoryBean.test}">
+				
+			 <h:outputText value="Category Name:" />
+	<p:inputText value="#{manageShopBean.category.name}" />
+	
+	
+	
+	
+	
+		<h:outputLabel value="List of Shops" />
+							<div class="form-group">
+								<p:selectOneMenu
+									value="#{manageCategoryBean.category.shop.idShop}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageCategoryBean.shops()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idShop}" />
+								</p:selectOneMenu>
+							</div>
+ 	
+
+	
+	
+
+	 
+				
+			</p:panelGrid>
+			
+				<h:commandButton value="Save"
+				actionListener="#{manageCategoryBean.addCategory()}"
+				update="ProductListForm:datalist,growl"
+				oncomplete="PF('ProductCreateDialog').hide();" ajax="true" />
+				</h:form>
+	</p:dialog>
+	
+	
+	<!-- Edit Form -->
+
+	<p:dialog id="ProductEditForm" widgetVar="ProductEditDialog" modal="true"
+		resizable="false" appendTo="@(body)" header="#{bundle.EditProductTitle}">
+		<h:form >
+			<p:panelGrid columns="2" rendered="#{manageCategoryBean .test2}">
+
+				
+
+				
+                 <p:outputLabel value="name" />
+				<p:inputText id="number" value="#{manageCategoryBean.category.name}" />
+
+				
+
+				
+		<p:outputLabel value="List of Shops" />
+							<div class="form-group">
+								<p:selectOneMenu
+									value="#{manageCategoryBean.category.shop.idShop}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageCategoryBean.shops()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idShop}" />
+								</p:selectOneMenu>
+							</div>
+			</p:panelGrid>
+			
+			<p:commandButton value="Save"
+				actionListener="#{manageCategoryBean.updateCategory()}"
+				update="ProductListForm:datalist,growl"
+				oncomplete="PF('ProductEditDialog').hide();" ajax="true" />
+
+
+
+
+		</h:form>
+	</p:dialog>
+			
+		</ui:define>
+</ui:composition>
+	
+	
+
+</html>

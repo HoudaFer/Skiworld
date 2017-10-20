@@ -1,0 +1,20 @@
+[0330/155327.026:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155327.042:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0330/155327.042:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155328.237:ERROR:crashpad_client_win.cc(660)] crash server failed to launch, no dump captured
+[0330/155343.180:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155343.195:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0330/155343.195:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155343.258:ERROR:crashpad_client_win.cc(660)] crash server failed to launch, no dump captured
+[0330/155355.344:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155355.344:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0330/155355.344:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/155355.422:ERROR:crashpad_client_win.cc(660)] crash server failed to launch, no dump captured
+[0330/172411.813:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/172411.830:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0330/172411.832:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0330/172411.922:ERROR:crashpad_client_win.cc(660)] crash server failed to launch, no dump captured
+[0331/140729.348:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0331/140729.613:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0331/140729.615:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\settings.dat: Accès refusé. (0x5)
+[0331/140731.603:ERROR:crashpad_client_win.cc(660)] crash server failed to launch, no dump captured

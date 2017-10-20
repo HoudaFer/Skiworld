@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+	<h:form>
+		<h3>Choose the type of Ski Area you want to add </h3>
+	
+		
+		<h:panelGrid columns="2">
+		    <h:outputLabel value="Type Area" />
+			<h:inputText value="#{manageSkiAreaTypeBean.typeArea}" />
+			<h:outputLabel value="Difficulty" />
+			<h:selectOneMenu value="#{manageSkiAreaTypeBean.difficulty}">
+			<f:selectItem itemValue="Easy" itemLabel="Easy"  />
+			<f:selectItem itemValue="Medium" itemLabel="Medium" />
+			<f:selectItem itemValue="Hard" itemLabel="Hard" />
+		    </h:selectOneMenu>
+	
+			
+	
+			<h:commandButton action="#{manageSkiAreaTypeBean.AddSkiAreaType()}" value="Add" />
+		</h:panelGrid>
+		
+		<br />
+	
+		<br />
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

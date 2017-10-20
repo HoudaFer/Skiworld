@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+	<h:form id="form1">
+    <p:dataTable id="skiTD" var="ski" value="#{manageSkiAreaTypeBean.typeskiareas}" widgetVar="skiTable" multiViewState="true"
+                 rows="10" paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15"
+                 selectionMode="single" selection="#{manageSkiAreaTypeBean.skiareaType}" rowKey="#{ski.idType}"
+                 emptyMessage="No cars found with given criteria" filteredValue="#{manageSkiAreaTypeBean.skiareatypesfiltered}">
+ 
+        <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('skiTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+ 
+        <p:ajax event="rowSelect" update=":form1:skiDetail" oncomplete="PF('skiDialog').show()" />
+ 
+        <p:column headerText="Id" filterBy="#{ski.idType}" sortBy="#{ski.idType}" filterMatchMode="contains">
+            <h:outputText value="#{ski.idType}" />
+        </p:column>
+ 
+        <p:column headerText="Type Area" filterBy="#{ski.typeArea}" sortBy="#{ski.typeArea}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.typeArea}" />
+        </p:column>
+        
+        <p:column headerText="Difficulty" filterBy="#{ski.difficulty}" sortBy="#{ski.difficulty}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.difficulty}" />
+        </p:column>
+
+
+        
+        <p:column headerText="Delete" >
+      					 <h:commandButton action="#{manageSkiAreaTypeBean.deleteSkiAreaType(ski)}" value="delete"/>
+      				 </p:column>
+      				 
+      			<p:column headerText="Update" >
+    <h:commandButton value="update" >
+    <f:setPropertyActionListener value="#{ski}" target="#{manageSkiAreaTypeBean.skiareaType2}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="#{true}" target="#{manageSkiAreaTypeBean.renderUpdateForm}"></f:setPropertyActionListener>
+   </h:commandButton>
+    </p:column> 
+        
+        
+        
+    </p:dataTable>
+    <h:commandButton action="#{manageSkiAreaTypeBean.inisialiser()}"
+					value="Add" >
+					</h:commandButton>	
+    
+    
+    
+
+    <p:dialog header="Ski Area Info" widgetVar="skiDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="skiDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty manageSkiAreaTypeBean.skiareaType}" columnClasses="label,value">
+ 
+                          
+<!--                 <h:outputText value="Id " /> -->
+<!--                 <h:outputText value="#{addSkiAreaBean.skiArea.idArea}" /> -->
+ 
+                Type Area:
+                <h:outputText value="#{manageSkiAreaTypeBean.skiareaType.typeArea}" />
+ 
+                Difficulty:
+                <h:outputText value="#{manageSkiAreaTypeBean.skiareaType.difficulty}" />
+                
+               
+                
+             </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>					
+				
+				
+				
+				
+				
+				
+				
+				
+				<br />
+		<h:form rendered="#{manageSkiAreaTypeBean.renderUpdateForm}">
+			<h:panelGrid columns="2">
+
+		Type Area:
+		<h:inputText value="#{manageSkiAreaTypeBean.skiareaType2.typeArea}" />
+		
+		Difficulty:
+		<h:selectOneMenu value="#{manageSkiAreaTypeBean.skiareaType2.difficulty}" >
+			<f:selectItem itemValue="Easy" itemLabel="Easy"  />
+			<f:selectItem itemValue="Medium" itemLabel="Medium" />
+			<f:selectItem itemValue="Hard" itemLabel="Hard" />
+		</h:selectOneMenu>
+	
+	
+		<h:commandButton action="#{manageSkiAreaTypeBean.updateSkiAreaType()}"
+					value="Submit" >
+					
+					<f:setPropertyActionListener value="#{false}" target="#{manageSkiAreaTypeBean.renderUpdateForm}"></f:setPropertyActionListener>	
+					</h:commandButton>
+		</h:panelGrid>			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

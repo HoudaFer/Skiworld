@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Restaurant manager</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="firstName" />
+				<p:inputText value="#{userBean.firstName}" />
+				<p:outputLabel value="lastName" />
+				<p:inputText value="#{userBean.lastName}" />
+				<p:outputLabel value="cin" />
+				<p:inputText value="#{userBean.cin}" />
+				<p:outputLabel value="email" />
+				<p:inputText value="#{userBean.email}" />
+				<p:outputLabel value="phone" />
+				<p:inputText value="#{userBean.phone}" />
+				<p:outputLabel value="adress" />
+				<p:inputText value="#{userBean.adress}" />
+				<p:outputLabel value="experienceRes" />
+				<p:inputText value="#{userBean.experienceRes}" />
+				<p:outputLabel value="registrationNumber" />
+				<p:inputText value="#{userBean.registrationNumber}" />
+				<p:outputLabel value="login" />
+				<p:inputText value="#{userBean.login}" />
+				<p:outputLabel value="password" />
+				<p:inputText value="#{userBean.passWord}" />
+				<h:commandButton action="#{userBean.AddRestaurantManager()}"
+					value="Add" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="login" />
+				<p:inputText value="#{authenticationBean.login}" />
+				<p:outputLabel value="password" />
+				<p:password value="#{authenticationBean.password}" />
+				<h:commandButton action="#{authenticationBean.login()}"
+					value="Connexion" />
+			</p:panelGrid>
+			<h:commandLink action="SignIn" value="SignIn" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

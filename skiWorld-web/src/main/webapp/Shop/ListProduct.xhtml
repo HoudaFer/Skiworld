@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+	
+					 	
+<p:growl id="growl"></p:growl>
+<h:form id="ProductListForm">
+<p:panel header="List Product">
+	<p:dataTable id="datalist"  value="#{manageShopBean.products}"  var="prod"
+				paginator="true" rows="10" rowsPerPageTemplate="10,20,30,40,50" >
+	
+   
+	<p:column >
+	<f:facet name="header" >
+	<h:outputText value="Product Name" />
+	</f:facet>
+	<h:outputText value="#{prod.name}" />
+	
+	</p:column>
+	
+	
+	
+	
+	<p:column>
+					<f:facet name="header">
+						<h:outputText value="Price" />
+					</f:facet>
+					<h:outputText value="#{prod.price}" />
+				</p:column>
+	
+	
+	
+	<p:column>
+					<f:facet name="header">
+						<h:outputText value="isAvailable" />
+					</f:facet>
+					<h:outputText value="#{prod.isAvailable}" />
+				</p:column>
+	
+	
+	<p:column>
+					<f:facet name="header">
+						<h:outputText value="Category Name" />
+					</f:facet>
+					<h:outputText value="#{prod.category.name}" />
+				</p:column>
+	
+	
+	
+		<p:column>
+					<f:facet name="header">
+						<h:outputText value="Delete" />
+					</f:facet>
+					<p:commandButton ajax="true" id="deleteButton" update="datalist"
+						actionListener="#{manageShopBean.delete(prod)}" value="Delete"
+						icon="ui-icon-trash" immediate="true" />
+				</p:column>
+	
+	
+    
+   <p:column>
+					<f:facet name="header">
+						<h:outputText value="Edit" />
+					</f:facet>
+					<p:commandButton id="editButton" ajax="true"
+						actionListener="#{manageShopBean.prepareEdit(prod)}"
+						icon="ui-icon-pencil" value="Edit" update=":ProductEditForm"
+						oncomplete="PF('ProductEditDialog').show()" />
+
+
+				</p:column>
+	
+	
+	
+	
+	<f:facet name="footer">
+					<p:commandButton id="createButton" icon="ui-icon-plus" ajax="true"
+						value="Create" actionListener="#{manageShopBean.prepareCreate()}"
+						update=":ProductCreateForm"
+						oncomplete="PF('ProductCreateDialog').show()" />
+				</f:facet>
+	
+	</p:dataTable>
+	</p:panel>
+	</h:form>
+	
+	<!-- Creation form -->
+	
+	
+		
+	<p:dialog id="ProductCreateForm" widgetVar="ProductCreateDialog"
+		modal="true" resizable="true" header="New Preduct ">
+		<h:form >
+		<p:panelGrid columns="2" rendered="#{manageShopBean.test}">
+				
+			 <h:outputText value="Product Name:" />
+	<p:inputText value="#{manageShopBean.product.name}" />
+	
+	
+	<h:outputText value="Price:" />
+	<p:inputText value="#{manageShopBean.product.price}" />
+	 
+	 <h:outputText value="Avaibility:" />
+	<p:selectBooleanCheckbox value="#{manageShopBean.product.isAvailable}" />
+	
+	
+	<h:outputLabel value="List of Categories" />
+							<div class="form-group">
+								<p:selectOneMenu
+									value="#{manageShopBean.product.category.idCategory}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageShopBean.categorys()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idCategory}" />
+								</p:selectOneMenu>
+							</div>
+ 	
+
+	
+	
+
+	 
+				
+			</p:panelGrid>
+			
+				<p:commandButton value="Save"
+				actionListener="#{manageShopBean.addProduct()}"
+				update="ProductListForm:datalist,growl"
+				oncomplete="PF('ProductCreateDialog').hide();" ajax="true" />
+				</h:form>
+	</p:dialog>
+	
+	
+	<!-- Edit Form -->
+
+	<p:dialog id="ProductEditForm" widgetVar="ProductEditDialog" modal="true"
+		resizable="false" appendTo="@(body)" header="#{bundle.EditProductTitle}">
+		<h:form >
+			<p:panelGrid columns="2" rendered="#{manageShopBean .test2}">
+
+				
+
+				
+                 <p:outputLabel value="name" />
+				<p:inputText id="number" value="#{manageShopBean.product.name}" />
+
+				<p:outputLabel value="Price" />
+				<p:inputText id="price" value="#{manageShopBean.product.price}" />
+
+				<p:outputLabel value="Avaibility" />
+				
+				<p:selectBooleanCheckbox id="available" value="#{manageShopBean.product.isAvailable}" />
+
+				<p:outputLabel value="List of Categories" />
+							<div class="form-group">
+								<p:selectOneMenu
+									value="#{manageShopBean.product.category.idCategory}"
+									styleClass="form-control">
+									<f:selectItems value="#{manageShopBean.categorys()}"
+										var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idCategory}" />
+								</p:selectOneMenu>
+							</div>
+			</p:panelGrid>
+			
+			<p:commandButton value="Save"
+				actionListener="#{manageShopBean.updateProduct()}"
+				update="ProductListForm:datalist,growl"
+				oncomplete="PF('ProductEditDialog').hide();" ajax="true" />
+
+
+
+
+		</h:form>
+	</p:dialog>
+	</ui:define>
+</ui:composition>
+
+</html>

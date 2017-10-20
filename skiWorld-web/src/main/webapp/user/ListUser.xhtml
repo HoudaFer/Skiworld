@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">List users</ui:define>
+	<ui:define name="content">
+	<h:form>
+	<p:dataTable var="Users" value="#{userBean.users}" border="3" >
+
+			<p:column>
+				<f:facet name="header">Status</f:facet>
+				<h:outputLabel value="#{Users.status}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">first name</f:facet>
+				<h:outputLabel value="#{Users.firstName}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">last name</f:facet>
+				<h:outputLabel value="#{Users.lastName}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">phone</f:facet>
+				<h:outputLabel value="#{Users.phone}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">email</f:facet>
+				<h:outputLabel value="#{Users.email}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">delete</f:facet>
+				<h:commandButton action="#{userBean.DeleteUser()}"
+					value="delete">
+					<f:setPropertyActionListener value="#{Users}"
+						target="#{userBean.user}">
+					</f:setPropertyActionListener>
+				</h:commandButton>
+			</p:column>
+			<p:column>
+				<f:facet name="header">update</f:facet>
+				<h:commandButton value="update">
+					<f:setPropertyActionListener value="#{Users}"
+						target="#{userBean.user}"/>
+					<f:setPropertyActionListener value="true"
+						target="#{userBean.renderUpdateForm}"/>
+				</h:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	
+		<br />
+		<h:form rendered="#{userBean.renderUpdateForm}">
+			<h:panelGrid columns="2">
+		<p:outputLabel value="First name:"  />
+		<p:inputText value="#{userBean.user.firstName}" />
+		
+		<p:outputLabel value="Last name:"  />
+		<p:inputText value="#{userBean.user.lastName}" />
+				<h:commandButton action="#{userBean.updateUser()}"
+					value="Submit" />
+			</h:panelGrid>
+		</h:form>
+	
+	</ui:define>
+</ui:composition>
+</html>

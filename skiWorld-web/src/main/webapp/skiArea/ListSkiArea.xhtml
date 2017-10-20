@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Planing</ui:define>
+	<ui:define name="content">
+
+<h:form id="form1">
+    <p:dataTable id="skiTD" var="ski" value="#{addSkiAreaBean.skiareas}" widgetVar="skiTable" multiViewState="true"
+                 rows="10" paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15"
+                 selectionMode="single" selection="#{addSkiAreaBean.skiArea}" rowKey="#{ski.idArea}"
+                 emptyMessage="No Ski Areas are available" filteredValue="#{addSkiAreaBean.skiareasfiltered}">
+ 
+     <f:facet name="header"> 
+            <p:outputPanel> 
+<!--                 <h:outputText value="Search all fields:" /> -->
+<!--                 <p:inputText id="globalFilter" onkeyup="PF('skiTable').filter()" style="width:150px" placeholder="Enter keyword"/> -->
+          </p:outputPanel> 
+     </f:facet> 
+ 
+        <p:ajax event="rowSelect" update=":form1:skiDetail" oncomplete="PF('skiDialog').show()" />
+
+ 
+        <p:column headerText="Ski Area Name" filterBy="#{ski.name}" sortBy="#{ski.name}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.name}" />
+        </p:column>
+        
+        <p:column headerText="Available" filterBy="#{ski.available}" sortBy="#{ski.available}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.available}" />
+        </p:column>
+        
+        <p:column headerText="Address" filterBy="#{ski.address}" sortBy="#{ski.address}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.address}" />
+        </p:column>
+    <p:column headerText="Image">
+            
+              <o:graphicImage value="#{addSkiAreaBean.afficherPic(ski.image)}" dataURI="true" style="height:100px;width:200px;"></o:graphicImage>
+        </p:column>
+        
+ 
+    
+        
+            <p:column headerText="Spectator" filterBy="#{ski.spectatorNumber}" sortBy="#{ski.spectatorNumber}" filterMatchMode="startsWith">
+            <h:outputText value="#{ski.spectatorNumber}" />
+        </p:column>
+        
+        
+        <p:column headerText="Type Area" filterBy="#{ski.skiAreaType.typeArea}" sortBy="#{ski.skiAreaType.typeArea}" filterMatchMode="exact" filterOptions="#{addSkiAreaBean.filterTypes}">
+            <h:outputText value="#{ski.skiAreaType.typeArea}" />
+        </p:column>
+        
+        
+        
+        <p:column headerText="Delete" >
+      					 <h:commandButton action="#{addSkiAreaBean.deleteSkiArea(ski)}" value="delete"/>
+      				 </p:column>
+      				 
+      			<p:column headerText="Update" >
+    <h:commandButton value="update" >
+    <f:setPropertyActionListener value="#{ski}" target="#{addSkiAreaBean.skiArea2}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="#{true}" target="#{addSkiAreaBean.renderUpdateForm}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="#{ski.skiAreaType.idType}" target="#{addSkiAreaBean.selectedPisteTypeId}"></f:setPropertyActionListener>
+   </h:commandButton>
+    </p:column> 
+        
+        
+        
+    </p:dataTable>
+   
+   
+   <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+   </h:panelGrid>
+    <h:commandButton action="#{addSkiAreaBean.inisialiser()}" value="Add" >
+	</h:commandButton>	
+	
+   
+   
+    
+
+    <p:dialog header="Ski Area Info" widgetVar="skiDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="skiDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty addSkiAreaBean.skiArea}" columnClasses="label,value">
+ 
+                          
+<!--                 <h:outputText value="Id " /> -->
+<!--                 <h:outputText value="#{addSkiAreaBean.skiArea.idArea}" /> -->
+ 
+                Name:
+                <h:outputText value="#{addSkiAreaBean.skiArea.name}" />
+ 
+                Available:
+                <h:outputText value="#{addSkiAreaBean.skiArea.available}" />
+                
+                Address:
+                <h:outputText value="#{addSkiAreaBean.skiArea.address}" />
+                
+                Spectator Number:
+                <h:outputText value="#{addSkiAreaBean.skiArea.spectatorNumber}" />
+                
+             </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+    
+    
+    <br />
+    
+</h:form>				
+               	
+		<h:form rendered="#{addSkiAreaBean.renderUpdateForm}" enctype="multipart/form-data">
+		 <p:growl id="msg"   />
+<!-- 			<h:messages style="color:red;"/> -->
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+<!-- 		Ski Area Id: -->
+ 	<!--  	<h:outputText value="#{addSkiAreaBean.skiArea2.idArea}" />	-->
+ 	
+		Ski Area Name:
+		<h:inputText id="name" value="#{addSkiAreaBean.skiArea2.name}" validatorMessage="The minimum name allowed character 4 and the Maximum 20 character">
+		<f:validateLength minimum="4" maximum="20"></f:validateLength>
+		</h:inputText>
+		
+<!-- 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"> -->
+		Availability:
+		<p:selectBooleanCheckbox value="#{addSkiAreaBean.skiArea2.available}" >
+<!-- 		  <p:ajax  update="msg" listener="#{addSkiAreaBean.addMessage()}" /> -->
+		</p:selectBooleanCheckbox>
+
+<!-- 		 </h:panelGrid> -->
+		Spectator Number:	
+		<h:inputText id="number" a:type="number" a:min="15" a:max="100" value="#{addSkiAreaBean.skiArea2.spectatorNumber}"  validatorMessage="The minimum spectator number is 15 and the maximum is 100">
+		
+		</h:inputText>
+		Ski Area Adrress:
+		<h:inputText id="adress" value="#{addSkiAreaBean.skiArea2.address}" validatorMessage="The adress length need to be between 4 and 25">
+				<f:validateLength minimum="4" maximum="25"></f:validateLength>
+		</h:inputText>
+		Ski Area Image:
+		<h:inputFile id="pic" value="#{addSkiAreaBean.picFile}" validatorMessage="Picture Required">
+	
+		</h:inputFile>         
+         Type Area :
+         <h:selectOneMenu value="#{addSkiAreaBean.selectedPisteTypeId}">
+          <f:selectItem itemValue="-1" itemLabel="choose one ..."/>
+          <f:selectItems value="#{addSkiAreaBean.selectItemsForPisteTypes}"/>
+         </h:selectOneMenu>
+            		
+		<h:commandButton action="#{addSkiAreaBean.updateSkiArea()}"
+					value="Submit" >
+					<f:setPropertyActionListener value="#{false}" target="#{addSkiAreaBean.renderUpdateForm}"></f:setPropertyActionListener>
+					<f:setPropertyActionListener value="#{addSkiAreaBean.skiArea2.image}" target="#{addSkiAreaBean.uploadImage}"></f:setPropertyActionListener>
+				</h:commandButton>    
+				</h:panelGrid>			
+
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>

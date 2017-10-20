@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="author" content="Mosaddek" />
+	<meta name="keyword"
+		content="slick, flat, dashboard, bootstrap, admin, template, theme, responsive, fluid, retina" />
+	<meta name="description" content="" />
+	<link rel="shortcut icon" href="javascript:;" type="image/png" />
+
+	<title>SlickLab - Responsive Admin Dashboard Template</title>
+	<!--easy pie chart-->
+	<link
+		href="../resources/js/jquery-easy-pie-chart/jquery.easy-pie-chart.css"
+		rel="stylesheet" type="text/css" media="screen" />
+
+	<!--right slidebar-->
+	<link href="../resources/css/slidebars.css" rel="stylesheet" />
+
+	<!--switchery-->
+	<link href="../resources/js/switchery/switchery.min.css"
+		rel="stylesheet" type="text/css" media="screen" />
+
+	<!--jquery-ui-->
+	<link href="../resources/js/jquery-ui/jquery-ui-1.10.1.custom.min.css"
+		rel="stylesheet" />
+
+	<!--iCheck-->
+	<link href="../resources/js/icheck/skins/all.css" rel="stylesheet" />
+	<link href="../resources/css/owl.carousel.css" rel="stylesheet" />
+
+
+	<!--common style-->
+	<link href="../resources/css/style.css" rel="stylesheet" />
+	<link href="../resources/css/style-responsive.css" rel="stylesheet" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</h:head>
+<body class="sticky-header">
+
+	<h:section> <!-- sidebar left start-->
+	<div class="sidebar-left">
+		<!--responsive view logo start-->
+		<div class="logo dark-logo-bg visible-xs-* visible-sm-*">
+			<a href="index.html"> <img src="../resources/img/logo.png"
+				style="width: 60px" alt="" /> <!--<i class="fa fa-maxcdn"></i>--> <span
+				class="brand-name">Ski World</span></a>
+		</div>
+		<!--responsive view logo end-->
+
+		<div class="sidebar-left-info">
+			<!-- visible small devices start-->
+			<div class=" search-field"></div>
+			<!-- visible small devices end-->
+
+			<!--sidebar nav start-->
+			<ul class="nav nav-pills nav-stacked side-navigation">
+				<li>
+					<h3 class="navigation-title">Management</h3>
+				</li>
+                
+				
+				<li class="menu-list" style="margin-left: 20px;"><a href=""><i class="fa fa-cutlery"></i>
+						<span>Restaurant</span></a>
+					<ul class="child-list">
+						<li><a href="../restaurant/AddRestaurant.xhtml">
+							<i class="fa fa-plus"></i>	
+                            Create</a></li>
+						<li><a href="../restaurant/ListRestaurant.xhtml">
+							<i class="fa fa-list"></i>	
+                            List</a></li>
+				</ul></li>
+                
+                <li class="menu-list" style="margin-left: 20px;"><a href=""><i class="fa fa-coffee"></i>
+						<span>Restaurant Table</span></a>
+					<ul class="child-list">
+						<li><a href="../AddRestoTable.xhtml">
+							<i class="fa fa-plus"></i>	
+                            Create</a></li>
+						<li><a href="../ListRestoTable.xhtml">
+							<i class="fa fa-list"></i>	
+                            List</a></li>
+				</ul></li>
+                
+                 <li class="menu-list" style="margin-left: 20px;"><a href=""><i class="fa fa-spoon"></i>
+						<span>Menu</span></a>
+					<ul class="child-list">
+						<li><a href="../AddMenu.xhtml">
+							<i class="fa fa-plus"></i>	
+                            Create</a></li>
+						<li><a href="../ListMenu.xhtml">
+							<i class="fa fa-list"></i>	
+                            List</a></li>
+				</ul></li>
+                
+                 <li class="menu-list" style="margin-left: 20px;"><a href=""><i class="fa fa-male"></i>
+						<span>Worker</span></a>
+					<ul class="child-list">
+						<li><a href="../AddWorker.xhtml">
+							<i class="fa fa-plus"></i>	
+                            Create</a></li>
+						<li><a href="../ListWorker.xhtml">
+							<i class="fa fa-list"></i>	
+                            List</a></li>
+				</ul></li>
+                
+
+			</ul>
+			<!--sidebar nav end-->
+
+		</div>
+	</div>
+	
+	<!-- body content end--> 
+	</h:section>
+
+
+
+	<!-- Placed js at the end of the document so the pages load faster -->
+	<script src="../resources/js/jquery-1.10.2.min.js"></script>
+
+	<!--jquery-ui-->
+	<script src="../resources/js/jquery-ui/jquery-ui-1.10.1.custom.min.js"
+		type="text/javascript"></script>
+
+	<script src="../resources/js/jquery-migrate.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/modernizr.min.js"></script>
+
+	<!--Nice Scroll-->
+	<script src="../resources/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
+
+	<!--right slidebar-->
+	<script src="../resources/js/slidebars.min.js"></script>
+
+	<!--switchery-->
+	<script src="../resources/js/switchery/switchery.min.js"></script>
+	<script src="../resources/js/switchery/switchery-init.js"></script>
+
+	<!--flot chart -->
+	<script src="../resources/js/flot-chart/jquery.flot.js"></script>
+	<script src="../resources/js/flot-chart/flot-spline.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.resize.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.pie.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.selection.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.stack.js"></script>
+	<script src="../resources/js/flot-chart/jquery.flot.crosshair.js"></script>
+
+
+	<!--earning chart init-->
+	<script src="../resources/js/earning-chart-init.js"></script>
+
+
+	<!--Sparkline Chart-->
+	<script src="../resources/js/sparkline/jquery.sparkline.js"></script>
+	<script src="../resources/js/sparkline/sparkline-init.js"></script>
+
+	<!--easy pie chart-->
+	<script
+		src="../resources/js/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+	<script src="../resources/js/easy-pie-chart.js"></script>
+
+	<!--Icheck-->
+	<script src="../resources/js/icheck/skins/icheck.min.js"></script>
+	<script src="../resources/js/todo-init.js"></script>
+
+	<!--jquery countTo-->
+	<script src="../resources/js/jquery-countTo/jquery.countTo.js"
+		type="text/javascript"></script>
+
+	<!--owl carousel-->
+	<script src="../resources/js/owl.carousel.js"></script>
+
+
+	<!--common scripts for all pages-->
+
+	<script src="../resources/js/scripts.js"></script>
+
+
+	<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        //countTo
+
+        $('.timer').countTo();
+
+        //owl carousel
+
+        $("#news-feed").owlCarousel({
+            navigation : true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem : true,
+            autoPlay:true
+        });
+    });
+
+    $(window).on("resize",function(){
+        var owl = $("#news-feed").data("owlCarousel");
+        owl.reinit();
+    });
+
+</script>
+
+</body>
+</html>
