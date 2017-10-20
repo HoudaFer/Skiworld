@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"> 
+ <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+
+	<h:form>
+	<p:dataTable var ="restaurant" value="#{restaurantBean.restaurants}" border="3">
+	<p:column>
+	<f:facet name="header" > ID</f:facet>
+    <h:outputLabel value="#{restaurant.idRestaurant}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Name </f:facet>
+    <h:outputLabel value="#{restaurant.name}" />
+	</p:column>
+	
+	<p:column>
+	<f:facet name="header" > Phone </f:facet>
+    <h:outputLabel value="#{restaurant.phone}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Open date </f:facet>
+    <h:outputLabel value="#{restaurant.openDate}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Close date </f:facet>
+    <h:outputLabel value="#{restaurant.closeDate}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Rating </f:facet>
+    <h:outputLabel value="#{restaurant.starRating}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Location </f:facet>
+    <h:outputLabel value="#{restaurant.location}" />
+	</p:column>
+	
+	<p:column>
+	<f:facet name="header" > Delete </f:facet>
+	<h:commandButton action="#{restaurantBean.delete(restaurant)}" value="Delete" />
+	</p:column>	
+	<p:column>
+	<f:facet name="header" > Update </f:facet>
+	<h:commandButton action="#{restaurantBean.updateRestaurant()}" value="Update" >
+	<f:setPropertyActionListener value="#{restaurant}" target="#{restaurantBean.restaurant}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="true" target="#{restaurantBean.renderUpdateForm}"></f:setPropertyActionListener>
+    </h:commandButton>
+	</p:column>	
+	
+	</p:dataTable>		
+
+	<div >
+         <h:form  rendered="#{restaurantBean.renderUpdateForm}">
+         <h2>Restaurant</h2>
+         <h:panelGrid columns="2">
+         	<h:outputText value="ID"/>
+			<p:inputText value="#{restaurantBean.restaurant.idRestaurant}" />
+         	<h:outputLabel value="Name" />
+			<p:inputText  value="#{restaurantBean.restaurant.name}" />
+			
+			<h:outputText value="Phone"/>
+			<p:inputText value="#{restaurantBean.restaurant.phone}" />
+			<h:outputText value="Location"/>
+			<p:inputText value="#{restaurantBean.restaurant.location}" />
+			<h:outputText value="Rating"/>
+			<p:inputText value="#{restaurantBean.restaurant.starRating}" />
+			<h:outputText value="Open Date"/>
+			<p:inputText value="#{restaurantBean.restaurant.openDate}" >
+			<f:convertDateTime pattern="dd/MM/yyyy" /> 
+			</p:inputText>
+			<h:outputText value="Close Date"/>
+			<p:inputText value="#{restaurantBean.restaurant.closeDate}" >
+			<f:convertDateTime pattern="dd/MM/yyyy" /> 
+			</p:inputText>
+			<h:commandButton action="#{restaurantBean.updateRestaurant()}" value="Submit" />
+	
+		</h:panelGrid>
+         </h:form>
+         
+    </div>
+	
+	
+</h:form>
+
+</ui:define>
+</ui:composition>
+</html>

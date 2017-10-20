@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+         <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">        
+                
+         <h:form>
+			<h:dataTable border="2" value="#{tableReservationBean.restotables}"
+				var="restotables">
+				<f:facet name="header">Restaurant Table List</f:facet>
+				<h:column>
+					<f:facet name="header">Table Number</f:facet>
+					<h:outputText value="#{restotables.tablesNumber}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Chairs Number</f:facet>
+					<h:outputText value="#{restotables.chairsNumber}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Availability</f:facet>
+					<h:outputText value="#{restotables.available}" />
+				</h:column>
+			
+				
+				<h:column>
+					<f:facet name="header">Reserve</f:facet>
+					<h:commandButton value="Reserve">
+						<f:setPropertyActionListener value="#{restotables}"
+							target="#{tableReservationBean.selectedTable}" />
+						<f:setPropertyActionListener value="true"
+							target="#{tableReservationBean.renderReserve}" />
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+		<h:form rendered="#{tableReservationBean.renderReserve}">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Table Number" />
+				<h:outputText value="#{tableReservationBean.selectedTable.tablesNumber}" />
+				<h:outputLabel value="Start Time" />
+				<h:inputText value="#{tableReservationBean.startTime}">
+				<f:convertDateTime pattern="dd/MM/yyyy" /> 
+				</h:inputText>
+				<h:outputLabel value="End Time" />
+				<h:inputText value="#{tableReservationBean.endTime}">
+				<f:convertDateTime pattern="dd/MM/yyyy" /> 
+				</h:inputText>
+				<h:commandButton action="#{tableReservationBean.Reserve()}" value="Reserve" />
+			</h:panelGrid>
+		</h:form>
+		</ui:define>
+</ui:composition>
+
+</ui:composition>

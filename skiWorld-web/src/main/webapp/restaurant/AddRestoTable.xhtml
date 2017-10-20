@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+
+ 
+	<h:form>
+	<p:panelGrid columns="2">
+	
+	<h:outputLabel value="Chairs Number" />
+	<p:inputText value="#{restoTableBean.chairsNumber}" />
+	<h:outputLabel value="Table Number" />
+	<p:inputText value="#{restoTableBean.tablesNumber}" />
+	<h:outputLabel value="Availability" />
+	<p:selectBooleanCheckbox value="#{restoTableBean.available}" style="color:blue;" />
+			
+	<h:outputLabel value="List of restaurants" />
+	<p:selectOneMenu value="#{restoTableBean.restotable.restaurant.idRestaurant}" styleClass="form-control">
+		<f:selectItems value="#{restoTableBean.restaurants}" var="item" itemLabel="#{item.name}" itemValue="#{item.idRestaurant}" />
+	</p:selectOneMenu>
+					
+	<p:commandButton action="#{restoTableBean.addingRestoTable()}" value="Add Table" />
+	</p:panelGrid>
+	</h:form>
+
+ 
+	</ui:define>
+</ui:composition>
+</html>

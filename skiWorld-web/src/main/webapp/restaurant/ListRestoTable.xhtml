@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+ <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+ 
+	<h:form>
+	<p:dataTable var ="restotable" value="#{restoTableBean.restotables}" border="3">
+		<p:column>
+		<f:facet name="header" > ID </f:facet>
+	    <h:outputLabel value="#{restotable.idTable}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Chairs Number </f:facet>
+	    <h:outputLabel value="#{restotable.chairsNumber}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Table Number </f:facet>
+		<h:outputLabel value="#{restotable.tablesNumber}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Availability </f:facet>
+		<h:outputLabel value="#{restotable.available}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Delete </f:facet>
+	    <h:commandButton action="#{restoTableBean.deletingTable(restotable)}" value="Delete" />
+		</p:column>		
+		
+		<p:column>
+		<f:facet name="header" > Update </f:facet>
+		<h:commandButton action="#{restoTableBean.updateRestoTable()}" value="Update" >
+		<f:setPropertyActionListener value="#{restotable}" target="#{restoTableBean.restotable}"></f:setPropertyActionListener>
+	    <f:setPropertyActionListener value="true" target="#{restoTableBean.renderUpdateForm}"></f:setPropertyActionListener>
+	    </h:commandButton>
+		</p:column>
+	</p:dataTable>	
+	
+	<div >
+         <h:form  rendered="#{restoTableBean.renderUpdateForm}">
+         <h2>Worker</h2>
+         <h:panelGrid columns="2">
+         	<h:outputText value="ID"/>
+			<p:inputText value="#{restoTableBean.restotable.idTable}" />
+         	<h:outputLabel value="Chairs number" />
+			<p:inputText  value="#{restoTableBean.restotable.chairsNumber}" />
+			<h:outputText value="Table number"/>
+			<p:inputText value="#{restoTableBean.restotable.tablesNumber}" />
+			<h:outputText value="Availability"/>
+			<p:inputText value="#{restoTableBean.restotable.available}" />
+			
+			<h:commandButton action="#{restoTableBean.updateRestoTable()}" value="Submit" />
+	
+		</h:panelGrid>
+         </h:form>
+    </div>
+    </h:form>
+	</ui:define>
+</ui:composition>	
+
+
+</html>

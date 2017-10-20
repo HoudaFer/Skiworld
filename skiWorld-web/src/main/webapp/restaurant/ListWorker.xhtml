@@ -1,0 +1,112 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+ <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+
+	<h:form>
+	<p:dataTable var ="worker" value="#{workerBean.workers}" border="3">
+	<p:column>
+	<f:facet name="header" > CIN </f:facet>
+    <h:outputLabel value="#{worker.cin}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Last Name </f:facet>
+    <h:outputLabel value="#{worker.lastName}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > First Name </f:facet>
+    <h:outputLabel value="#{worker.firstName}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Adress </f:facet>
+    <h:outputLabel value="#{worker.adress}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Password </f:facet>
+    <h:outputLabel value="#{worker.password}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Login </f:facet>
+    <h:outputLabel value="#{worker.login}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > ExperienceWorker </f:facet>
+    <h:outputLabel value="#{worker.experienceWorker}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Speciality </f:facet>
+    <h:outputLabel value="#{worker.speciality}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Registration Number </f:facet>
+    <h:outputLabel value="#{worker.registrationNumbe}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Email </f:facet>
+    <h:outputLabel value="#{worker.email}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Phone </f:facet>
+    <h:outputLabel value="#{worker.phone}" />
+	</p:column>
+	<p:column>
+	<f:facet name="header" > Delete </f:facet>
+	<h:commandButton action="#{workerBean.deletingWorker(worker)}" value="Delete" />
+	</p:column>	
+	<p:column>
+	<f:facet name="header" > Update </f:facet>
+	<h:commandButton action="#{workerBean.updateWorker()}" value="Update" >
+	<f:setPropertyActionListener value="#{worker}" target="#{workerBean.worker}"></f:setPropertyActionListener>
+    <f:setPropertyActionListener value="true" target="#{workerBean.renderUpdateForm}"></f:setPropertyActionListener>
+    </h:commandButton>
+	</p:column>	
+	
+	</p:dataTable>		
+
+	<div >
+         <h:form  rendered="#{workerBean.renderUpdateForm}">
+         <h2>Worker</h2>
+         <h:panelGrid columns="2">
+         	<h:outputText value="ID"/>
+			<p:inputText value="#{workerBean.worker.idUser}" />
+			<h:outputText value="CIN"/>
+			<p:inputText value="#{workerBean.worker.cin}" />
+         	<h:outputLabel value="First Name" />
+			<p:inputText  value="#{workerBean.worker.firstName}" />
+			<h:outputText value="Last Name"/>
+			<p:inputText value="#{workerBean.worker.lastName}" />
+			<h:outputText value="phone"/>
+			<p:inputText value="#{workerBean.worker.phone}" />
+			<h:outputText value="Adress"/>
+			<p:inputText value="#{workerBean.worker.adress}" />
+			<h:outputText value="Login"/>
+			<p:inputText value="#{workerBean.worker.login}" />
+			<h:outputText value="Password"/>
+			<p:inputText value="#{workerBean.worker.password}" />
+			<h:outputText value="phone"/>
+			<p:inputText value="#{workerBean.worker.phone}" />
+			<h:outputText value="Experience Worker"/>
+			<h:inputText value="#{workerBean.worker.experienceWorker}" />
+			<h:outputText value="Speciality"/>
+			<p:inputText value="#{workerBean.worker.speciality}" />
+			<h:outputText value="Registration Number"/>
+			<p:inputText value="#{workerBean.worker.registrationNumbe}" />
+			<h:outputText value="Email"/>
+			<p:inputText value="#{workerBean.worker.email}" />
+			<h:commandButton action="#{workerBean.updateWorker()}" value="Submit" />
+	
+		</h:panelGrid>
+         </h:form>
+    </div>
+	
+	
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

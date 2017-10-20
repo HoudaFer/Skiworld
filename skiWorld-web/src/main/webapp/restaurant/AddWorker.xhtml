@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+ <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">worker</ui:define>
+	<ui:define name="content">
+
+	<h:form>
+	<p:panelGrid columns="2">
+	<h:outputLabel value="Last Name" />
+	<p:inputText value="#{workerBean.lastName}" />
+	<h:outputLabel value="First Name" />
+	<p:inputText value="#{workerBean.firstName}" />
+	<h:outputLabel value="CIN " />
+	<p:inputText value="#{workerBean.cin}" />
+	<h:outputLabel value="Phone Number" />
+	<p:inputText value="#{workerBean.phone}" />
+	<h:outputLabel value="Email" />
+	<p:inputText value="#{workerBean.email}" />
+	<h:outputLabel value="Address" />
+	<p:inputText value="#{workerBean.adress}" />
+	<h:outputLabel value="Password" />
+	<p:inputText value="#{workerBean.password}" />
+	<h:outputLabel value="Login" />
+	<p:inputText value="#{workerBean.login}" />
+	<h:outputLabel value="Experience" />
+	<p:inputText value="#{workerBean.experienceWorker}" />
+	<h:outputLabel value="Speciality" />
+	<p:inputText value="#{workerBean.speciality}" />
+	<h:outputLabel value="Registration Number" />
+	<p:inputText value="#{workerBean.registrationNumbe}" />
+	<p:commandButton action="#{workerBean.addingWorker()}" value="Add Chef" />
+	</p:panelGrid>
+	</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

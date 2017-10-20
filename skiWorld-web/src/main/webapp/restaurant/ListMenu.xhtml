@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+ <ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+ 
+	<h:form>
+	<p:dataTable var ="menu" value="#{menuBean.menus}" border="3">
+		<p:column>
+		<f:facet name="header" > Name </f:facet>
+	    <h:outputLabel value="#{menu.name}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Order Number </f:facet>
+	    <h:outputLabel value="#{menu.orderNumber}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Is Available </f:facet>
+	    <h:outputLabel value="#{menu.available}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Price </f:facet>
+	    <h:outputLabel value="#{menu.price}" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Delete </f:facet>
+	    <h:commandButton action="#{menuBean.delete(menu)}" value="Delete" />
+		</p:column>
+		<p:column>
+		<f:facet name="header" > Update </f:facet>
+		<h:commandButton action="#{menuBean.updateMenu()}" value="Update" >
+		<f:setPropertyActionListener value="#{menu}" target="#{menuBean.menu}"></f:setPropertyActionListener>
+	    <f:setPropertyActionListener value="true" target="#{menuBean.renderUpdateForm}"></f:setPropertyActionListener>
+	    </h:commandButton>
+		</p:column>	
+		
+	</p:dataTable>	
+	
+	
+		<div >
+         <h:form  rendered="#{menuBean.renderUpdateForm}">
+         <h2>Menu</h2>
+         <h:panelGrid columns="2">
+         	<h:outputText value="ID"/>
+			<p:inputText value="#{menuBean.menu.idMenu}" />
+         	<h:outputLabel value="Menu Name" />
+			<p:inputText  value="#{menuBean.menu.name}" />
+			<h:outputText value="Menu Price"/>
+			<p:inputText value="#{menuBean.menu.price}" />
+			<h:outputText value="Availability"/>
+			<p:inputText value="#{menuBean.menu.available}" />
+			
+			<h:commandButton action="#{menuBean.updateMenu()}" value="Submit" />
+	
+		</h:panelGrid>
+         </h:form>
+    </div>
+				
+		
+</h:form>
+
+</ui:define>
+</ui:composition> 
+</html>

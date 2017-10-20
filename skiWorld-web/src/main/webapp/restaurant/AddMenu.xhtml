@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="title">Menu</ui:define>
+	<ui:define name="content">
+<h:head>
+	<h1>ADD MENU</h1>
+</h:head> 
+<body>
+	<h:form>
+	<p:panelGrid columns="2">
+	<h:outputLabel value="Name" />
+	<p:inputText value="#{menuBean.name}" />
+	<h:outputLabel value="Order" />
+	<p:inputText value="#{menuBean.orderNumber}" />
+	<h:outputLabel value="Price" />
+	<p:inputText value="#{menuBean.price}" />
+	<h:outputLabel value="Availability" />
+
+	<p:selectBooleanCheckbox value="#{menuBean.available}" style="color:blue;" />
+	<h:outputLabel value="List of restaurants" />
+			<p:selectOneMenu value="#{menuBean.menu.restaurant.idRestaurant}" styleClass="form-control">
+			<f:selectItems value="#{menuBean.restaurants}" var="item" itemLabel="#{item.name}"
+										itemValue="#{item.idRestaurant}" />
+			</p:selectOneMenu>
+		<h:commandButton action="#{menuBean.addingMenu()}" value="Submit" styleClass="btn btn-info" />
+	
+	</p:panelGrid>
+	</h:form>
+	</body>
+	</ui:define>
+</ui:composition>
+
+</html>
